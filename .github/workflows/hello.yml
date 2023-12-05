@@ -4,9 +4,9 @@ on:
   # triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-    # this will ignore pushes to feature 
-    branches-ignore:
-      - 'feature/*'
+    # # this will ignore pushes to feature 
+    # branches-ignore:
+    #   - 'feature/*'
     # path will only trigger the workflow when the changes are in the README.md or docs folder
     paths:
       - 'README.md'
