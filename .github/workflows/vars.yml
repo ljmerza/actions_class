@@ -44,3 +44,22 @@ jobs:
   
       - name: prints action_state
         run:  echo "action_state var ${{ ENV.action_state }}"
+  
+  ubuntu-var-print:
+    name: prints ubuntu var
+    runs-on: ubuntu-latest 
+    steps:
+      - name: prints ubuntu var
+        run:  env
+  windows-var-print:
+    name: prints windows var
+    runs-on: windows-latest 
+    steps:
+      - name: prints windows var
+        run:  env
+  macos-var-print:
+    name: prints macos var
+    runs-on: macos-latest 
+    steps:
+      - name: prints macos var
+        run:  env
