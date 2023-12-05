@@ -71,13 +71,13 @@ jobs:
       - name: print MY_SEC var
         run: |
           echo "MY_SEC var ${{ secrets.MY_SEC }}"
-          
-      - name: print MY_SEC_VAR env var
+
+      - name: print MY_VAR env var
         run: |
-          echo "MY_SEC_VAR env var ${{ env.MY_SEC_VAR }}"
+          echo "MY_VAR env var ${{ env.MY_VAR }}"
 
       - name: print secret as env var
         env:
-          MY_SEC_VAR: ${{ secrets.MY_SEC }}
+          MY_VAR2: ${{ secrets.MY_SEC }}
         run: |
-          echo "MY_SEC_VAR env var ${{ env.MY_SEC_VAR }}"
+          echo "MY_SEC env var ${{ env.MY_VAR2 }}"
