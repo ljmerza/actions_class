@@ -19,7 +19,6 @@ jobs:
 
     #  steps are the commands that will be executed on the runner
     steps:
-      # checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       uses: actions/checkout@v3
       
       # runs a single command using the runners shell
