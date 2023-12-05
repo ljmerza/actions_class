@@ -34,3 +34,13 @@ jobs:
     steps:
       - name: prints testvar
         run:  echo "testvar var ${{ ENV.testvar }}"
+  
+  job3:
+    name: save var
+    runs-on: ubuntu-latest 
+    steps:
+      - name: save action_state
+        run:  echo "action_state=yellow" >> $GITHUB_ENV
+  
+      - name: prints action_state
+        run:  echo "action_state var ${{ ENV.action_state }}"
