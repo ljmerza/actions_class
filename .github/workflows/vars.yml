@@ -1,0 +1,36 @@
+name: 'custom ENV'
+
+on:  workflow_dispatch
+
+env:
+  DAY: 'Monday'
+  testvar: 'test'
+
+jobs:
+  mainjob:
+    name: prints vars
+    runs-on: ubuntu-latest 
+    env:
+      local: 'local'
+      testvar: 'test2'
+    steps:
+      - name: prints all vars
+        env:
+          testvar: 'test3'
+        run: |
+          echo "all vars"
+          env
+          echo "local var ${{ ENV.local }}"
+          echo "testvar var ${{ ENV.testvar }}"
+          echo "day var ${{ ENV.DAY }}"
+
+      - name: prints all vars p2
+        run: |
+          echo "testvar var ${{ ENV.testvar }}"
+  
+  job2:
+    name: prints testvar
+    runs-on: ubuntu-latest 
+    steps:
+      - name: prints testvar
+        run:  echo "testvar var ${{ ENV.testvar }}"
