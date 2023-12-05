@@ -64,7 +64,7 @@ jobs:
       - name: prints macos var
         run:  env
 
-  sec_vars:
+  set_vars:
     name: print MY_SEC var
     runs-on: ubuntu-latest
     steps:
