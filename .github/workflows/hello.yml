@@ -25,7 +25,7 @@ on:
 # A workflow is made up of one or more jobs running sequentially or in parallel
 jobs:
   # the name of the job
-  build:
+  build-app:
     # the type of runner that will execute the job
     runs-on: ubuntu-latest
 
@@ -37,3 +37,20 @@ jobs:
       # runs a single command using the runners shell
       - name: Run one line script
         run: echo Hello, world!
+      
+      # then run this next step after the last one has completed
+      - name: second step
+        run: |
+          echo second step
+          echo second step part 2
+  
+  build-db:
+    runs-on: ubuntu-latest
+    needs: build-app
+    steps:
+      - name: Runs DB aetup
+        run: echo run next job for db setup
+  
+  packaging:
+    runs-on: self-hosted # this will run on a self-hosted runner on my local machine
+    needs: [build-app, build-db]
