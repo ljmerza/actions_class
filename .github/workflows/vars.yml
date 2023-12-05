@@ -63,3 +63,21 @@ jobs:
     steps:
       - name: prints macos var
         run:  env
+
+  sec_vars:
+    name: print MY_SEC var
+    runs-on: ubuntu-latest
+    steps:
+      - name: print MY_SEC var
+        run: |
+          echo "MY_SEC var ${{ secrets.MY_SEC }}"
+          
+      - name: print MY_SEC_VAR env var
+        run: |
+          echo "MY_SEC_VAR env var ${{ env.MY_SEC_VAR }}"
+
+      - name: print secret as env var
+        env:
+          MY_SEC_VAR: ${{ secrets.MY_SEC }}
+        run: |
+          echo "MY_SEC_VAR env var ${{ env.MY_SEC_VAR }}"
