@@ -36,14 +36,22 @@ jobs:
         run:  echo "testvar var ${{ vars.testvar }}"
   
   job3:
-    name: save var
+    name: save a var
     runs-on: ubuntu-latest 
     steps:
       - name: save action_state
-        run:  echo "action_state=yellow" >> $GITHUB_ENV
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+          echo "::set-output name=action_state2::Techskool"
+          echo "::set-output name=action_state3::$(date + '%Y-%m-%d-%h-%M')"
+
   
       - name: prints action_state
-        run:  echo "action_state var ${{ vars.action_state }}"
+        run:  |
+          echo "action_state var ${{ vars.action_state }}"
+          echo "action_state2 var ${{ vars.action_state2 }}"
+          echo "action_state3 var ${{ vars.action_state3 }}"
+
   
   ubuntu-var-print:
     name: prints ubuntu var
@@ -84,14 +92,18 @@ jobs:
   
   env_change_dev:
     runs-on: ubuntu-latest
-    environment: development
+    environment:
+      name: development
+      url: https://github.com
     steps:
       - name: run env vars that are attached to development env
         run: |
           echo "env var ${{ vars.ENV_BASED_VAR }}"
   env_change_prod:
     runs-on: ubuntu-latest
-    environment: production
+    environment: 
+      name: production
+      url: https://github.com
     steps:
       - name: run env vars that are attached to production env
         run: |
