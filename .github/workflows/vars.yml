@@ -88,11 +88,11 @@ jobs:
     steps:
       - name: run env vars that are attached to development env
         run: |
-          echo "env var ${{ env.ENV_BASED_VAR }}"
+          echo "env var ${{ vars.ENV_BASED_VAR }}"
   env_change_prod:
     runs-on: ubuntu-latest
     environment: production
     steps:
       - name: run env vars that are attached to production env
         run: |
-          echo "env var ${{ env.ENV_BASED_VAR }}"
+          echo "env var ${{ vars.ENV_BASED_VAR }}"
