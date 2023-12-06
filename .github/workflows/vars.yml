@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest 
     steps:
       - name: prints testvar
-        run:  echo "testvar var ${{ ENV.testvar }}"
+        run:  echo "testvar var ${{ vars.testvar }}"
   
   job3:
     name: save var
@@ -43,7 +43,7 @@ jobs:
         run:  echo "action_state=yellow" >> $GITHUB_ENV
   
       - name: prints action_state
-        run:  echo "action_state var ${{ ENV.action_state }}"
+        run:  echo "action_state var ${{ vars.action_state }}"
   
   ubuntu-var-print:
     name: prints ubuntu var
@@ -74,7 +74,7 @@ jobs:
 
       - name: print MY_VAR env var
         run: |
-          echo "MY_VAR env var ${{ env.MY_VAR }}"
+          echo "MY_VAR env var ${{ vars.MY_VAR }}"
 
       - name: print secret as env var
         env:
