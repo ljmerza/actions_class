@@ -81,3 +81,22 @@ jobs:
           MY_VAR2: ${{ secrets.MY_SEC }}
         run: |
           echo "MY_SEC env var ${{ env.MY_VAR2 }}"
+  
+  env_change_dev:
+    runs-on: ubuntu-latest
+    environment: 
+      name: development
+      url: https://github.com
+    steps:
+      - name: run env vars that are attached to development env
+        run: |
+          echo "env var ${{ env.ENV_BASED_VAR }}"
+  env_change_prod:
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+      url: https://github.com
+    steps:
+      - name: run env vars that are attached to production env
+        run: |
+          echo "env var ${{ env.ENV_BASED_VAR }}"
